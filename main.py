@@ -31,12 +31,6 @@ def preprocess_image(image):
     except Exception as e:
         raise ValueError("Failed to preprocess the image.") from e
 
-
-@app.get("/")
-async def root():
-    return {"message": "Welcome to the Pneumonia Detection API. Use /docs to view the API documentation."}
-
-
 @app.post("/predict-image-upload")
 async def predict(file: UploadFile = File(...)):
     if file.content_type not in ["image/jpeg"]:
